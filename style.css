@@ -33,3 +33,35 @@ html, body {
   overflow: hidden; /* Ensure content like images stays inside the box */
   width: 600px; /* Explicitly set the width */
 }
+
+.map-legend {
+  position: absolute; /* Position it on top of the map */
+  bottom: 20px; /* Distance from the bottom of the map */
+  right: 20px; /* Distance from the left of the map */
+  background: white; /* White background for better visibility */
+  padding: 10px; /* Add padding inside the legend */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+  font-family: Arial, sans-serif; /* Font styling */
+  font-size: 12px; /* Font size */
+  line-height: 1.5; /* Line height for spacing */
+}
+
+.map-legend h3 {
+  margin: 0 0 10px; /* Add spacing below the title */
+  font-size: 14px; /* Slightly larger font for the title */
+}
+
+.map-legend div {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 5px; /* Add spacing between legend items */
+}
+
+.map-legend span {
+  display: inline-block; /* Make the color box inline */
+  width: 20px; /* Width of the color box */
+  height: 20px; /* Height of the color box */
+  margin-right: 10px; /* Spacing between the color box and text */
+  border: 1px solid #000; /* Optional: Add a border to the color box */
+}

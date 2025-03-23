@@ -37,8 +37,21 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'school_sites',
         'paint': {
-            'fill-color': '#f00',
-            'fill-opacity': 0.6,
+            'fill-color': [
+                'case',
+                ['==', ['get', 'Rank1A'], 1], '#00FF00', // Green for Rank 1
+                ['==', ['get', 'Rank1A'], 2], '#ADFF2F', // Green-yellow for Rank 2
+                ['==', ['get', 'Rank1A'], 3], '#FFFF00', // Yellow for Rank 3
+                ['==', ['get', 'Rank1A'], 4], '#FFD700', // Gold for Rank 4
+                ['==', ['get', 'Rank1A'], 5], '#FFA500', // Orange for Rank 5
+                ['==', ['get', 'Rank1A'], 6], '#FF8C00', // Dark orange for Rank 6
+                ['==', ['get', 'Rank1A'], 7], '#FF4500', // Orange-red for Rank 7
+                ['==', ['get', 'Rank1A'], 8], '#FF0000', // Red for Rank 8
+                ['==', ['get', 'Rank1A'], 9], '#8B0000', // Dark red for Rank 9
+                ['==', ['get', 'Rank1A'], 10], '#800080', // Purple for Rank 10
+                '#808080' // Default color (Gray) if no rank is found
+            ],
+            'fill-opacity': 0.6
         }
     });
     map.addLayer({
@@ -68,6 +81,7 @@ map.on('click', 'school_sites', (e) => {
     const coordinates = e.lngLat;
 
     // Extracting environmental data
+    const ARank = properties.Rank1A || "N/A";
     const schoolName = properties.SITE_NAME || "No school name available";
     const treeCanopy = properties.TreeCanM || "N/A";
     const airPollution = properties.AirPolMea || "N/A";
@@ -77,6 +91,7 @@ map.on('click', 'school_sites', (e) => {
     // Create the popup content
     const info = `
         <strong>${schoolName}</strong><br>
+        🏫 1A Rank: ${ARank}<br>
         🌳 Tree Canopy: ${treeCanopy} m²<br>
         🌫️ Air Pollution: ${airPollution}<br>
         🔊 Noise Level: ${noiseLevel}<br>
