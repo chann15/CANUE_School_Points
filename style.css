@@ -12,165 +12,24 @@ html, body {
     height: 100vh; /* Full height of the viewport */
     overflow: hidden; /* Prevents scroll inside the map container */
   }
-  
-  /* .absolute styles any element that should be positioned absolutely */
-  .absolute {
-    position: absolute;
-    top: 0px; /* Moves it down a bit */
-    left: 0px; /* Moves it right a bit */
-    z-index: 1000; /* Ensures it's above the map */
-    background: rgba(255, 255, 255, 0.842); /* Slight transparency */
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  /* .map-search-container is the container for the search bar */
-  .map-search-container {
-    position: absolute; /* Absolute positioning to place it on the right */
-    top: 20px; /* Adjust this value to move the container down from the top */
-    right: 20px; /* Position the container 20px from the right edge of the viewport */
-    width: 260px; /* Width of the search container */
-    background: rgba(255, 255, 255, 0.76); /* Semi-transparent background */
-    padding: 10px;
-    border-radius: 8px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  }
-  
-  
-  /* .geocoder styles individual elements inside the search container */
-  .geocoder {
-      margin: 10px 0; /* Adjust margin between elements in the container */
-  }
-  
-  /* Small square toggle button */
-  .btn-collapse {
-    background-color: #93afc0; /* Dark color for the toggle */
-    color: rgb(255, 255, 255);
-    font-size: 18px; /* Size of the 'X' */
-    border: none;
-    width: 1px;
-    height: 1px;
-    border-radius: 0px; /* Rounded corners for the square */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-collapse:hover {
-    background-color: #5a5a5a; /* Darker shade on hover */
-  }
-  
-  /* Center the title at the top of the form */
-  .filter-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Center the toggle options (Walking, Cycling, Driving) */
-  .toggle-container-center {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Adjust the gap between each toggle */
-  }
-  
-  /* Center the "Rental Units" button */
-  .text-center button {
-    display: inline-block;
-    margin-top: 20px;
-  }
-  
-  /* Optional: Adjust the appearance of the toggle elements */
-  .toggle-container {
-    text-align: center;
-  }
-  
-  .toggle {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .toggle:hover {
-    background-color: #f1f1f1;
-  }
-  /* Style for the 'Choose a travel mode' title */
-  .travel-mode-title {
-    font-size: 15px; /* Set the size of the title */
-    font-family: "Verdana, sans-serif", Helvetica, Arial, sans-serif;
-    font-weight: bold; /* Make the title bold */
-    text-align: center; /* Center the title */
-    margin-bottom: 10px; /* Add space below the title */
-    color: #333; /* Optional: Set the color of the text */
-  }
-  
-  /* Style for the 'Choose a maximum duration' title */
-  .duration-title {
-    font-size: 15px; /* Set the size of the title */
-    font-family: "Verdana, sans-serif", Helvetica, Arial, sans-serif;
-    font-weight: bold; /* Make the title bold */
-    text-align: center; /* Center the title */
-    margin-top: 20px ;
-    margin-bottom: 10px; /* Add space below the title */
-    color: #333; /* Optional: Set the color of the text */
-  }
-  /* Styling for the Filters section title */
-  .filter-title {
-    font-family: "Verdana, sans-serif", Helvetica, Arial, sans-serif; /* Custom font */
-    font-size: 20px; /* Custom size */
-    font-weight: 600; /* Custom weight (e.g., semi-bold) */
-    color: #333; /* Custom color */
-    margin-bottom: 15px; /* Optional spacing */
-    text-transform: uppercase; /* Optional: makes text uppercase */
-    letter-spacing: 1px; /* Optional: adds spacing between letters */
-  }
-  
-  .legend-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.705);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    z-index: 1000;
-  }
-  
-  .legend-container h4 {
-    margin: 0 0 10px;
-  }
-  
-  .legend-container ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .legend-container li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .legend-color {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 3px;
-  }
+
 
 
   .mapboxgl-popup {
-    max-width: 400px;
+    max-width: 10000px; /* Set a reasonable max width */
+    width: 1000px; /* Explicitly set the width */
     font:
         12px/20px 'Helvetica Neue',
         Arial,
         Helvetica,
         sans-serif;
+}
+
+.mapboxgl-popup-content {
+  background: white; /* Ensure the background is white */
+  padding: 15px; /* Add padding inside the popup */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+  overflow: hidden; /* Ensure content like images stays inside the box */
+  width: 600px; /* Explicitly set the width */
 }

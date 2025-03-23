@@ -75,12 +75,30 @@ map.on('click', 'school_sites', (e) => {
     const treeCount = properties.TreeCoun || "N/A";
 
     // Create the popup content
-    const description = `
+    const info = `
         <strong>${schoolName}</strong><br>
         🌳 Tree Canopy: ${treeCanopy} m²<br>
         🌫️ Air Pollution: ${airPollution}<br>
         🔊 Noise Level: ${noiseLevel}<br>
         🌲 Tree Count: ${treeCount}
+    `;
+    const image_info = `Pictures/${schoolName}.jpeg`; // No extra quotes
+    console.log(image_info);
+
+    const imageHtml = `
+    <img src="${image_info}" alt="${schoolName}" style="width: 300px; height: auto;">
+`;
+
+    const description = `
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                ${info}
+            </div>  
+            <div style="flex: 1;">
+                <b>${schoolName}</b>
+                ${imageHtml}
+            </div>
+        </div>
     `;
 
     // Show the popup
