@@ -7,7 +7,7 @@ const map = new mapboxgl.Map({
   container: 'my-map', // container id
   style: 'mapbox://styles/mapbox/standard-satellite',  // ****ADD MAP STYLE HERE *****
   center: [-79.39514670504386, 43.661694006349904],
-  zoom: 13 // starting zoom
+  zoom: 12 // starting zoom
 });
 
 map.on('load', () => {
@@ -27,7 +27,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'walking_map',
         'paint': {
-            'fill-color': '#088',
+            'fill-color': '#FFFFFF',
             'fill-opacity': 0.4,
         }
     });

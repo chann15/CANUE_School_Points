@@ -65,3 +65,14 @@ html, body {
   margin-right: 10px; /* Spacing between the color box and text */
   border: 1px solid #000; /* Optional: Add a border to the color box */
 }
+
+.map-Title{
+  position: absolute; /* Position it on top of the map */
+  top: 20px; /* Distance from the bottom of the map */
+  left: 20px; /* Distance from the left of the map */
+  background: white; /* White background for better visibility */
+  padding: 5px; /* Add padding inside the legend */
+  border-radius: 8px; /* Rounded corners */
+  font-family: Arial, sans-serif; /* Font styling */
+}
+
