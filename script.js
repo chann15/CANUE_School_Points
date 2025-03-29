@@ -110,7 +110,7 @@ map.on('click', 'school_sites', (e) => {
                 ${info}
             </div>  
             <div style="flex: 1;">
-                <b>${schoolName}</b>
+                <b>Street View</b>
                 ${imageHtml}
             </div>
         </div>
