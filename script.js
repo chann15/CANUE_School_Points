@@ -76,6 +76,76 @@ map.on('load', () => {
 
 });
 
+let iso_data;
+
+fetch('https://raw.githubusercontent.com/chann15/CANUE_School_Points/refs/heads/main/GeoJson_Isochrone_Data.geojson')
+  .then(response => response.json())
+  .then(response => {
+    console.log(response); //Check response in console
+    iso_data = response; // Store geojson as variable using URL from fetch response
+
+  });
+
+map.on('click', 'walking_map', (e) => {
+    const properties = e.features[0].properties;
+    const coordinates = e.lngLat;
+
+    console.log(properties.Name);
+    console.log(iso_data.features[1].properties.Name);
+    console.log(iso_data.features[0].properties.Name === properties.Name);
+    console.log(iso_data.features.length);
+    
+    let ARank;
+    let Street_Name;
+    let treeCanopy;
+    let airPollution;
+    let noiseLevel;
+    let treeCount;
+    let healthy_food;
+
+
+    for (let i = 0; i < iso_data.features.length; i++) {
+        console.log(iso_data.features[i].properties.Name);
+        if (iso_data.features[i].properties.Name === properties.Name) {
+            console.log(iso_data.features[i].properties.Name);
+            console.log(properties.Name);
+
+            ARank = iso_data.features[i].properties.Rank || "N/A";
+            Street_Name = iso_data.features[i].properties.Name || "No school name available";
+            treeCanopy = iso_data.features[i].properties.TCanmean || "N/A";
+            airPollution = iso_data.features[i].properties.APmean || "N/A";
+            noiseLevel = iso_data.features[i].properties.NPmean || "N/A";
+            treeCount = iso_data.features[i].properties.Treepoint || "N/A";
+            healthy_food = iso_data.features[i].properties.HFpoint || "N/A";
+        }
+    }
+
+    const info = `
+        <strong>${Street_Name} minute walk</strong><br>
+        🏫 1B Rank: ${ARank}<br>
+        🌳 Tree Canopy: ${treeCanopy} m²<br>
+        🌫️ Air Pollution: ${airPollution} ppb<br>
+        🔊 Noise Level: ${noiseLevel} dB<br>
+        🌲 Tree Count: ${treeCount}<br>
+        🥦 Healthy Food Outlets Count: ${healthy_food}<br>
+    `;
+
+    const description = `
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                ${info}
+            </div>  
+        </div>
+    `;
+
+    // Show the popup
+    new mapboxgl.Popup({ className: 'walking-map-popup' })
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+});
+
+
 map.on('click', 'school_sites', (e) => {
     const properties = e.features[0].properties;
     const coordinates = e.lngLat;
@@ -93,8 +163,8 @@ map.on('click', 'school_sites', (e) => {
         <strong>${schoolName}</strong><br>
         🏫 1A Rank: ${ARank}<br>
         🌳 Tree Canopy: ${treeCanopy} m²<br>
-        🌫️ Air Pollution: ${airPollution}<br>
-        🔊 Noise Level: ${noiseLevel}<br>
+        🌫️ Air Pollution: ${airPollution} ppb<br>
+        🔊 Noise Level: ${noiseLevel} dB<br>
         🌲 Tree Count: ${treeCount}
     `;
     const image_info = `Pictures/${schoolName}.jpeg`; // No extra quotes
@@ -132,5 +202,14 @@ map.on('mouseenter', 'school_sites', () => {
 
 // Change it back to a pointer when it leaves.
 map.on('mouseleave', 'school_sites', () => {
+    map.getCanvas().style.cursor = '';
+});
+
+map.on('mouseenter', 'walking_map', () => {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'walking_map', () => {
     map.getCanvas().style.cursor = '';
 });

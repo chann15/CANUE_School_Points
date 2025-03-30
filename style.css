@@ -15,15 +15,6 @@ html, body {
 
 
 
-  .mapboxgl-popup {
-    max-width: 10000px; /* Set a reasonable max width */
-    width: 1000px; /* Explicitly set the width */
-    font:
-        12px/20px 'Helvetica Neue',
-        Arial,
-        Helvetica,
-        sans-serif;
-}
 
 .mapboxgl-popup-content {
   background: white; /* Ensure the background is white */
@@ -33,6 +24,17 @@ html, body {
   overflow: hidden; /* Ensure content like images stays inside the box */
   width: 600px; /* Explicitly set the width */
 }
+
+
+.walking-map-popup .mapboxgl-popup-content{
+  background: white; /* Ensure the background is white */
+  padding: 15px; /* Add padding inside the popup */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+  overflow: hidden; /* Ensure content like images stays inside the box */
+  width: 300px; /* Explicitly set the width */
+}
+
 
 .map-legend {
   position: absolute; /* Position it on top of the map */
@@ -74,5 +76,6 @@ html, body {
   padding: 5px; /* Add padding inside the legend */
   border-radius: 8px; /* Rounded corners */
   font-family: Arial, sans-serif; /* Font styling */
+  font-size: 25px; /* Font size */
 }
 
