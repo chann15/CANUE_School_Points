@@ -121,7 +121,6 @@ map.on('click', 'walking_map', (e) => {
     }
 
     const info = `
-        <strong>${Street_Name} minute walk</strong><br>
         🏫 1B Rank: ${ARank}<br>
         🌳 Tree Canopy: ${treeCanopy} m²<br>
         🌫️ Air Pollution: ${airPollution} ppb<br>
@@ -160,7 +159,6 @@ map.on('click', 'school_sites', (e) => {
 
     // Create the popup content
     const info = `
-        <strong>${schoolName}</strong><br>
         🏫 1A Rank: ${ARank}<br>
         🌳 Tree Canopy: ${treeCanopy} m²<br>
         🌫️ Air Pollution: ${airPollution} ppb<br>
